@@ -34,7 +34,7 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
                      }
                 }
                 stage('delivery'){
-                    sh 'curl http://ec2-52-53-178-83.us-west-1.compute.amazonaws.com:30006/'
+                    sh 'curl http://ec2-35-166-28-86.us-west-2.compute.amazonaws.com:30006/'
                 }
             }
             slackSend(color: '#BDFFC3', message: 'The build and Deployment is Successful')
