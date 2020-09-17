@@ -18,7 +18,7 @@ public class App {
         server.setPort(8080);
         server.setBaseDir(new File("target/tomcat").getAbsolutePath());
         server.getConnector();
-        server.addWebapp("", new File("src/main/static").getAbsolutePath());
+        server.addWebapp("", new File("src/main/Static").getAbsolutePath());
         try {
             server.start();
             server.getServer().await();
