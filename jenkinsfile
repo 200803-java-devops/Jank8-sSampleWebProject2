@@ -8,10 +8,10 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
                     sh 'mvn test'
                 }
             }
-            slackSend(color: '#BDFFC3', message: 'Testing stage for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS')
+            slackSend(color: '#BDFFC3', message: 'Testing stage for Jank8s-Sample App 2 Succeeded')
         }
       }catch(e){
-            slackSend(color: '#FF0000', message: 'Testing stage for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS Check console output at $BUILD_URL to view the results')
+            slackSend(color: '#FF0000', message: 'Testing stage for Jank8s-Sample App 2 Failed. Check console output at http://ec2-35-166-28-86.us-west-2.compute.amazonaws.com:30000/job/gittest_sample2/ to view the results.')
             error "${e}"
       }
     }
@@ -37,10 +37,10 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
                     sh 'curl http://ec2-35-166-28-86.us-west-2.compute.amazonaws.com:30006/sample2'
                 }
             }
-            slackSend(color: '#BDFFC3', message: 'Build and Deployment stages for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS')
+            slackSend(color: '#BDFFC3', message: 'Build and Deployment stages for Jank8s-Sample App 2 Succeeded')
         }
       }catch(e){
-            slackSend(color: '#FF0000', message: 'Build and Deployment stages for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS Check console output at $BUILD_URL to view the results.')
+            slackSend(color: '#FF0000', message: 'Build and Deployment stages for Jank8s-Sample App 2 Failed. Check console output at http://ec2-35-166-28-86.us-west-2.compute.amazonaws.com:30000/job/gittest_sample2/ to view the results.')
             error "${e}"
       }
     }
