@@ -12,7 +12,6 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
         }
       }catch(e){
             slackSend(color: '#FF0000', message: 'The tests Failed, Please Check Console')
-            emailext body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\nFailed during the test stage\nCheck console output at $BUILD_URL to view the results.', recipientProviders: [developers(), culprits()], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: '$DEFAULT_RECIPIENTS'
             error "${e}"
       }
     }
@@ -26,7 +25,6 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
                 stage('Build a Maven project') {
                     sh 'mvn clean package -DskipTests'
                     sh 'cat src/main/Static/index.html'
-                    sh 'false'
                 }
                 stage('docker'){
                      sh 'docker build -t jank8s/jenkins-sample2 .'
@@ -43,7 +41,6 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
         }
       }catch(e){
             slackSend(color: '#FF0000', message: 'The Build and Deployment Failed, Please Check Console')
-            emailext body: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS:\nFailed during the build and deployment stage\nCheck console output at $BUILD_URL to view the results.', recipientProviders: [developers(), culprits()], subject: '$PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS!', to: '$DEFAULT_RECIPIENTS'
             error "${e}"
       }
     }
