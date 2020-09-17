@@ -2,7 +2,7 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
   node(POD_LABEL) {
       try{
         stage('Get a Maven project') {
-            git 'https://github.com/200803-java-devops/Jank8-sSampleWebProject'
+            git 'https://github.com/200803-java-devops/Jank8-sSampleWebProject2'
             container('maven') {
                 stage('Test') {
                     sh 'mvn test'
@@ -20,7 +20,7 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
   node(POD_LABEL) {
       try{
         stage('Get a Maven project') {
-            git 'https://github.com/200803-java-devops/Jank8-sSampleWebProject'
+            git 'https://github.com/200803-java-devops/Jank8-sSampleWebProject2'
             container('maven') {
                 stage('Build a Maven project') {
                     sh 'mvn clean package -DskipTests'
@@ -34,7 +34,7 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
                      }
                 }
                 stage('delivery'){
-                    sh 'curl http://ec2-35-166-28-86.us-west-2.compute.amazonaws.com:30006/'
+                    sh 'curl http://ec2-35-166-28-86.us-west-2.compute.amazonaws.com:30006/sample2'
                 }
             }
             slackSend(color: '#BDFFC3', message: 'The build and Deployment is Successful')
