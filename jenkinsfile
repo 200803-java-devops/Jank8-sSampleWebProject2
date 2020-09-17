@@ -8,10 +8,10 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
                     sh 'mvn test'
                 }
             }
-            slackSend(color: '#BDFFC3', message: 'The tests were Successful')
+            slackSend(color: '#BDFFC3', message: 'Testing stage for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS')
         }
       }catch(e){
-            slackSend(color: '#FF0000', message: 'The tests Failed, Please Check Console')
+            slackSend(color: '#FF0000', message: 'Testing stage for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS Check console output at $BUILD_URL to view the results')
             error "${e}"
       }
     }
@@ -37,10 +37,10 @@ podTemplate(containers: [containerTemplate(name: 'maven', image: 'bensonre/jenki
                     sh 'curl http://ec2-35-166-28-86.us-west-2.compute.amazonaws.com:30006/sample2'
                 }
             }
-            slackSend(color: '#BDFFC3', message: 'The build and Deployment is Successful')
+            slackSend(color: '#BDFFC3', message: 'Build and Deployment stages for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS')
         }
       }catch(e){
-            slackSend(color: '#FF0000', message: 'The Build and Deployment Failed, Please Check Console')
+            slackSend(color: '#FF0000', message: 'Build and Deployment stages for $PROJECT_NAME - Build # $BUILD_NUMBER - $BUILD_STATUS Check console output at $BUILD_URL to view the results.')
             error "${e}"
       }
     }
